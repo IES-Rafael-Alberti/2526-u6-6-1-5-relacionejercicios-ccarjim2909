@@ -23,8 +23,6 @@ fun main() {
     println(perro.tipoRaza())
     println(zarigueya.nombre())
 
-    println()
-
     println("\nEspecializacion:\n")
     println(perro.onomatopeya())
     println(zarigueya.onomatopeya())
@@ -32,8 +30,16 @@ fun main() {
     println(leon.onomatopeya())
 
 
+    println("\nUnidad 6 — Ejercicio 6.2")
 
 
 
+
+
+    println("\nUnidad 6 — Ejercicio 6.3")
+
+    val rectangulo1 = Rectangulo("rojo","rectangulo especial", 10, 5)
+
+    println(rectangulo1)
 }
 
