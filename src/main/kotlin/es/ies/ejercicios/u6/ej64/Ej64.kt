@@ -12,6 +12,15 @@ package es.ies.ejercicios.u6.ej64
  */
 object Ej64
 
+
+
+/**
+ * Punto de entrada de la demo del ejercicio 6.4.
+ *
+ * Ejecuta varios ejemplos para mostrar:
+ * - generación de informes
+ * - funcionamiento del registro de personas
+ */
 fun main() {
     println("Ejercicio 6.4 (plantilla)")
     println("- Revisa `ProgramaDocumentable.kt` y mejora KDoc/comentarios según la teoría")
