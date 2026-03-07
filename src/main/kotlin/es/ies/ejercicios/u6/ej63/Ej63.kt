@@ -1,5 +1,6 @@
 package es.ies.ejercicios.u6.ej63
 
+
 /**
  * Ejercicio 6.3 — Incidencia de constructores en la herencia (RA7.c).
  *
@@ -12,4 +13,10 @@ fun main() {
     println("- Completa la jerarquía y los constructores en `es.ies.ejercicios.u6.ej63`")
     println("- Añade logs en init/constructores para ver el orden de inicialización")
     println("- Actualiza este main para instanciar usando distintos constructores")
+
+
+
+    val rectangulo1 = Rectangulo("rojo","rectangulo especial", 10, 5)
+    
+
 }
