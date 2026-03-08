@@ -38,8 +38,32 @@ fun main() {
 
     println("\nUnidad 6 — Ejercicio 6.3")
 
-    val rectangulo1 = Rectangulo("rojo","rectangulo especial", 10, 5)
 
-    println(rectangulo1)
+    println("---- Rectangulo usando constructor secundario (ancho, alto) ----")
+    val r1 = Rectangulo(4, 5)
+
+    println("\n---- Rectangulo usando constructor secundario (lado) ----")
+    val r2 = Rectangulo(3)
+
+    println("\n---- Circulo usando constructor secundario ----")
+    val c1 = Circulo(10)
+
+    println("\n---- Triangulo (subclase sin constructor primario) ----")
+    val t1 = Triangulo(6, 7)
+
+    println("\n---- Triangulo usando constructor que delega con this ----")
+    val t2 = Triangulo(5)
+
+
+
+    println("\nUnidad 6 — Ejercicio 6.4")
+
+    // nada
+
+
+    println("\nUnidad 6 — Ejercicio 6.5")
+
+
+
 }
 

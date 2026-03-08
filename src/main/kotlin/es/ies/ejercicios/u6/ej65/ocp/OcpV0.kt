@@ -2,47 +2,70 @@ package es.ies.ejercicios.u6.ej65.ocp
 
 import es.ies.ejercicios.u6.ej64.Resumible
 
-enum class FormatoInformeV0 {
-    CSV,
-    MARKDOWN,
-    // TODO (ejercicio): cuando quieras añadir otro formato, v0 te obliga a modificar este enum y el `when`.
-}
+
 
 /**
- * v0 (viola OCP): para añadir un nuevo formato hay que modificar este `when`.
+ * Abstracción para generar informes en distintos formatos.
  */
-class GeneradorInformeV0 {
-    fun generar(formato: FormatoInformeV0, titulo: String, items: List<Resumible>): String =
-        when (formato) {
-            FormatoInformeV0.CSV -> generarCsv(titulo, items)
-            FormatoInformeV0.MARKDOWN -> generarMarkdown(titulo, items)
-        }
+interface GeneradorInforme {
 
-    private fun generarCsv(titulo: String, items: List<Resumible>): String =
+    fun generar(titulo: String, items: List<Resumible>): String
+}
+
+class GeneradorCsv : GeneradorInforme {
+
+    override fun generar(titulo: String, items: List<Resumible>): String =
         buildString {
             appendLine("titulo,$titulo")
             appendLine("item")
-            for (item in items) appendLine(item.resumen().replace(",", ";"))
-        }
 
-    private fun generarMarkdown(titulo: String, items: List<Resumible>): String =
-        buildString {
-            appendLine("# $titulo")
-            for (item in items) appendLine("- ${item.resumen()}")
+            for (item in items) {
+                appendLine(item.resumen().replace(",", ";"))
+            }
         }
 }
 
+class GeneradorMarkdown : GeneradorInforme {
+
+    override fun generar(titulo: String, items: List<Resumible>): String =
+        buildString {
+            appendLine("# $titulo")
+
+            for (item in items) {
+                appendLine("- ${item.resumen()}")
+            }
+        }
+}
+
+class GeneradorHtml : GeneradorInforme {
+
+    override fun generar(titulo: String, items: List<Resumible>): String =
+        buildString {
+            appendLine("<h1>$titulo</h1>")
+            appendLine("<ul>")
+
+            for (item in items) {
+                appendLine("<li>${item.resumen()}</li>")
+            }
+
+            appendLine("</ul>")
+        }
+}
+
+
 fun main() {
+
     val items = listOf<Resumible>(
         object : Resumible {
             override fun resumen(): String = "Elemento A"
         },
         object : Resumible {
             override fun resumen(): String = "Elemento B"
-        },
+        }
     )
 
-    val generador = GeneradorInformeV0()
-    println(generador.generar(FormatoInformeV0.MARKDOWN, "Demo OCP", items))
+    val generador: GeneradorInforme = GeneradorMarkdown()
+
+    println(generador.generar("Demo OCP", items))
 }
 
